@@ -1,0 +1,25 @@
+host:
+  device: en0
+  snaplen: 65535
+  promisc: false
+rules:
+  drop:
+    -
+      base:
+        layer: ethernet
+        parm: 06-00-00-00-00-00
+    -
+      base:
+        layer: IPV4
+        parm: 192.168.0.4
+  redirect:
+    -
+      base:
+        layer: ipv4
+        parm: TTL=16
+      destination: 192.168.0.4
+    -
+      base:
+        layer: tcp
+        parm: URG
+      destination: 192.168.0.13
