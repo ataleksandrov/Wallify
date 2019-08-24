@@ -1,13 +1,19 @@
 package main
 
 import (
-	"fmt"
+	"log"
 
 	environment "github.com/Wallify/env"
+	"github.com/Wallify/sniffing"
 )
 
 func main() {
 	env := environment.NewDefault()
-	fmt.Println(*env.HC)
-	fmt.Println(*env.RC)
+
+	builder, err := sniffing.NewBuilder(env)
+	if err != nil {
+		log.Fatal("could not create builder error: %s", err)
+	}
+
+	builder.Build().Run()
 }
