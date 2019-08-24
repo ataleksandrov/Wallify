@@ -9,7 +9,7 @@ import (
 
 // Env represents an abstraction where the configuration of the Wallify will be loaded
 type Env struct {
-	HC *hostConfig  `mapstructure:"host"`
+	HC *HostConfig  `mapstructure:"host"`
 	RC *rulesConfig `mapstructure:"rules"`
 }
 
